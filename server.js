@@ -46,3 +46,14 @@ app.get("/v6/:id", (req,res)=>{
 app.listen(3000, () => {
     console.log("A szerver a 3000 porton fut!")
 })
+
+
+app.post("/vuj", (req,req)=>{
+    const sql = "INSERT INTO 'versenyzok'('ID', 'versenyzo') VALUES(?,?)";
+    const values = [req.body.ID, req.body.versenyzo];
+    db.query(sql,(err,result) =>{
+
+        if(err) return res.status(500).json({error: "Hibás adatbázis művelet!"});
+        return res.json(result);
+})
+})
